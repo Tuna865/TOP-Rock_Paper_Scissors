@@ -1,57 +1,62 @@
 /* To Do
 
-Need a way to establish that:
-    rock beats scissors 
-    scissors beats paper
-    paper beats rock
-    might could just declare win conditions
-Find a way to see what the player chose: 
+Find introduce what option the player chose: 
     might do something other than prompt, 
     such as an input or form since I have used that before
-Create comparisons:
-    one for when the player & computer choose the same
-    one for player winner 
-    one for comp winner 
 
 */
-let options = {
-    rock: 'rock',
-    paper: 'paper',
-    scissors: 'scissors'
-}
+let options = [
+    'rock',
+    'paper',
+    'scissors'
+]
 
 // returns a random choice from the 3 options in RPS
-const getComputerChoice = (obj) => {
-    const choice = Object.keys(obj)
-    return choice[Math.floor(Math.random() * choice.length)]
+const getComputerChoice = () => {
+    let compChoice = options[Math.floor(Math.random() * options.length)]
+    return compChoice
 }
 console.log(getComputerChoice(options))
 
 const getPlayerChoice = () => {
-    let playerChoice = prompt('Enter your choice of rock, paper, or scissors: ')
-    playerChoice.toLowerCase()
-    return playerChoice
-}
-getPlayerChoice()
-
-// probably gonna need several conditionals for this 
-// cant decide if I should do switch & case or if else statements
-const round = (compSelection, playerSelection) =>{
-    let compChoice = getComputerChoice(options)
-    let playerChoice = getPlayerChoice()
     
 }
 
 
+let compScore = 0
+let playerScore = 0
 
+// probably gonna need several conditionals for this 
+const playRound = (compSelection, playerSelection) =>{
+    let compChoice = getComputerChoice().toLowerCase()
+    let playerChoice = playerChoice().toLowerCase()
 
-switch(choice) {
-    case draw:
-        console.log('draw game');
-        break
-    case loser: 
-        console.log('computer wins :/')
-        break
-    case winner:
-        console.log('you win!')
+    if(compChoice == playerChoice){
+        console.log('Tie game')
+    }else if(
+    // round win conditions for comp (therefore, otherwise the player gets a point)
+        (compChoice == 'rock' && playerChoice == 'scissors') ||
+        (compChoice == 'scissors' && playerChoice == 'paper') ||
+        (compChoice == 'paper' && playerChoice == 'rock')
+    ){ ++compScore;
+        if(compScore == 5){
+            console.log('Box of enslaved lighning wins :/')
+        }
+    }else{++playerScore;
+        if(playerScore == 5){
+            console.log("That's a dub for humans!")
+        }
+    }
 }
+
+const game = () => {
+    playRound(compChoice, playerChoice)
+    for(let i = 0; i < 5; i++){
+        if(compChoice === playerChoice){
+            console.log('Draw game')
+        } else if (compChoice > playerChoice){
+
+        }
+    }
+}
+
