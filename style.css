@@ -3,6 +3,10 @@ body{
     min-height: 100vh;
     flex-direction: column;
     margin: 0;
+    font-family: roboto, arial, sans-serif
+ }
+ h1{
+    padding-left: 12px;
  }
 main{
     flex: 1;
@@ -15,8 +19,17 @@ main{
 .button:hover {
     cursor: pointer;
     box-shadow: 0 0 20px 1px;
-  } 
-
+} 
+.resetButton{
+    color: red;
+    background-color: darkgray;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.resetButton:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px 1px;
+}
 #game-choices{
     display: flex;
     flex-direction: column;
@@ -32,10 +45,6 @@ main{
 }
 
 footer {
-/*     
-    box-sizing: border-box;
-    position: fixed;
-    */
     padding: 10px;
     margin: 0;
     text-align: center;
