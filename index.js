@@ -1,6 +1,7 @@
 /* To Do
 
 Complete the round function
+    this is working to some extent, need to fix some errors
 Complete the game function
 Add a reset game button
     gonna look at my Arcade project for this
@@ -23,24 +24,26 @@ const getComputerChoice = () => {
     let compChoice = options[Math.floor(Math.random() * options.length)]
     return compChoice
 }
-console.log(getComputerChoice(options))
+console.log("computer choice:",getComputerChoice(options))
 
 buttonChoice.forEach((button) =>{
     button.addEventListener("click", () => {
         const selection = button.querySelector("img")
         playerChoice = selection.alt.toLowerCase()
-        console.log(playerChoice)
+        console.log("player choice:", playerChoice)
+        let compChoice = getComputerChoice(options)
+        console.log("computer choice:", compChoice)
+
+        playRound(compChoice, playerChoice)
     })
 })
 
 
 // probably gonna need several conditionals for this 
-const playRound = (compSelection, playerSelection) =>{
-    let compChoice = getComputerChoice().toLowerCase()
-    let playerChoice = playerChoice.toLowerCase()
-
+const playRound = (compChoice, playerChoice) =>{
+    
     if(compChoice == playerChoice){
-        console.log('Tie game')
+        console.log('Tie game, no points awarded')
     }else if(
     // round win conditions for comp (therefore, otherwise the player gets a point)
         (compChoice == 'rock' && playerChoice == 'scissors') ||
