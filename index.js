@@ -1,8 +1,9 @@
 /* To Do
 
-Find introduce what option the player chose: 
-    might do something other than prompt, 
-    such as an input or form since I have used that before
+Complete the round function
+Complete the game function
+Add a reset game button
+    gonna look at my Arcade project for this
 
 */
 let options = [
@@ -11,6 +12,12 @@ let options = [
     'scissors'
 ]
 
+let buttonChoice = document.querySelectorAll(".button") 
+let compChoice
+let playerChoice
+let compScore = 0
+let playerScore = 0
+
 // returns a random choice from the 3 options in RPS
 const getComputerChoice = () => {
     let compChoice = options[Math.floor(Math.random() * options.length)]
@@ -18,18 +25,19 @@ const getComputerChoice = () => {
 }
 console.log(getComputerChoice(options))
 
-const getPlayerChoice = () => {
-    
-}
+buttonChoice.forEach((button) =>{
+    button.addEventListener("click", () => {
+        const selection = button.querySelector("img")
+        playerChoice = selection.alt.toLowerCase()
+        console.log(playerChoice)
+    })
+})
 
-
-let compScore = 0
-let playerScore = 0
 
 // probably gonna need several conditionals for this 
 const playRound = (compSelection, playerSelection) =>{
     let compChoice = getComputerChoice().toLowerCase()
-    let playerChoice = playerChoice().toLowerCase()
+    let playerChoice = playerChoice.toLowerCase()
 
     if(compChoice == playerChoice){
         console.log('Tie game')
