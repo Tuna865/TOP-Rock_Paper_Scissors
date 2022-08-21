@@ -60,3 +60,7 @@ footer {
 a{
     text-decoration: none;
 }
+
+div p {
+    margin-left: 18px;
+}

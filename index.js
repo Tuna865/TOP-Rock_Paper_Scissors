@@ -1,12 +1,4 @@
-/* To Do
-
-Some more styling
-Add a reset game button
-    gonna look at my Arcade project for this
-    might add a rest button in the html instead of 
-    having the js do it automatically
-
-*/
+console.log("Welcome to Rock, Paper, Scissors!")
 let options = [
     'rock',
     'paper',
@@ -40,7 +32,6 @@ buttonChoice.forEach((button) =>{
     })
 })
 
-// probably gonna need several conditionals for this 
 const playRound = (compChoice, playerChoice) =>{
     if(compChoice == playerChoice){
         console.log('Tie round, no points awarded', compScore, playerScore)
@@ -63,13 +54,12 @@ const playRound = (compChoice, playerChoice) =>{
             }
         }
     }
-const reset = () => {
-    let playerScore = 0
-    let compScore = 0
-}
-
+    
+// resets the game by simply refreshing the page 
 resetButton.addEventListener("click", () => {
-    reset()
-    console.log("game has been reset", playerScore, compScore)
+    console.log("the game will reset in 5 seconds")
+    setTimeout(startOver = () => {
+        window.location.reload()
+    }, 5000)
 })
     
