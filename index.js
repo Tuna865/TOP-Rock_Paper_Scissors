@@ -1,4 +1,3 @@
-console.log("Welcome to Rock, Paper, Scissors!")
 let options = [
     'rock',
     'paper',
@@ -7,6 +6,7 @@ let options = [
 
 let buttonChoice = document.querySelectorAll(".button") 
 let resetButton = document.querySelector(".resetButton")
+let gameInfo = document.getElementById('gameInfo')
 let compChoice
 let playerChoice
 let compScore = 0
@@ -24,40 +24,36 @@ buttonChoice.forEach((button) =>{
         const selection = button.querySelector("img")
         playerChoice = selection.alt.toLowerCase()
         
-        console.log("player choice:", playerChoice)
         let compChoice = getComputerChoice(options)
         
-        console.log("computer choice:", compChoice)
         playRound(compChoice, playerChoice)
     })
 })
 
 const playRound = (compChoice, playerChoice) =>{
     if(compChoice == playerChoice){
-        console.log('Tie round, no points awarded', compScore, playerScore)
+        gameInfo.innerHTML = (`Tie round, no points awarded. Comp:${compScore} Player:${playerScore}`)
     }else if(
         // round win conditions for comp (therefore, otherwise the player gets a point)
         (compChoice == 'rock' && playerChoice == 'scissors') ||
         (compChoice == 'scissors' && playerChoice == 'paper') ||
         (compChoice == 'paper' && playerChoice == 'rock')
         ){ ++compScore 
-            console.log("Computer scores", compScore, playerScore);
+            gameInfo.innerHTML = (`Computer scores, Comp:${compScore} Player:${playerScore}`);
             if(compScore == 5){
-                console.log('Box of enslaved lighning wins :/')
-                
+                gameInfo.innerHTML = (`Box of enslaved lighning wins :/ Comp:${compScore} Player:${playerScore}`)
             }
         }else{++playerScore
-            console.log("Player scores", compScore, playerScore);
+            gameInfo.innerHTML = (`Player scores, Comp:${compScore} Player:${playerScore}`);
             if(playerScore == 5){
-                console.log("That's a dub for humans!")
-                
+                gameInfo.innerHTML = (`That's a dub for humans! Comp:${compScore} Player:${playerScore}`)
             }
         }
     }
     
 // resets the game by simply refreshing the page 
 resetButton.addEventListener("click", () => {
-    console.log("the game will reset in 5 seconds")
+    gameInfo.innerHTML = ("The game will reset in 5 seconds")
     setTimeout(startOver = () => {
         window.location.reload()
     }, 5000)
